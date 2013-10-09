@@ -25,6 +25,13 @@ public class App {
             };
 
             new Thread(runnable).start();
+
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                @Override
+                public void run() {
+                    System.out.println("Shutting down the service...");
+                }
+            });
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println(e.getStackTrace());
